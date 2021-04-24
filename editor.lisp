@@ -21,7 +21,8 @@
 
 (clim:make-command-table 'editor-menubar
                          :errorp nil
-                         :menu '(("File" :menu editor-file-menu)))
+                         :menu '(("File" :menu editor-file-menu)
+                                 ("Start a Swank server" :command com-start-repl)))
 
 (clim:make-command-table 'editor-file-menu
                          :errorp nil
@@ -30,6 +31,9 @@
                                  ("Save" :command com-save)
                                  ("Close" :command com-close)
                                  ("Quit" :command com-quit)))
+
+(define-editor-command (com-start-repl :name t) ((port 'number))
+  (swank:create-server :port port))
 
 (define-editor-command (com-quit :name t) ()
   (clim:frame-exit clim:*application-frame*))
