@@ -60,8 +60,7 @@
   (with-open-file (infile pathname :direction :input)
     (let ((text (make-string (file-length infile))))
       (read-sequence text infile)
-      )
-    text))
+      text)))
 
 (defun string->file (string pathname)
   (with-open-file (outfile pathname :direction :output :if-exists :supersede)
