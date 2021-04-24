@@ -2,4 +2,5 @@
 
 (defpackage #:editor
   (:use #:clim-lisp)
-  (:export #:run))
+  (:export #:run
+           #:make))
